@@ -108,7 +108,7 @@ class RobotVision(object):
             cv2.drawContours(self.current_frame, [hull], 0, (0, 0, 255), 2)
 
             for n, pt in enumerate(cnt):
-                pt = pt[0]
+                print(pt.shape)
                 cv2.circle(self.current_frame, pt, 4, (0, 255, 0), -1)
                 cv2.putText(self.current_frame, str(n), pt, cv2.FONT_HERSHEY_PLAIN, 1, (255, 200, 235), 3,
                             cv2.LINE_AA)
