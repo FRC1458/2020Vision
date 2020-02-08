@@ -43,24 +43,15 @@ def pose_3d(points_2d,
             dist_coeffs=np.array([[-7.7968254049911784e-02, 6.8336324508345037e-01,
                                    -5.7950590244645389e-03, 3.9975038267842673e-03,
                                    -1.7407537713228725e+00]])):
-    # 2D image points. If you change the image, you need to change vector
-    points_2d = np.array([
-        (359, 391),  # Nose tip
-        (399, 561),  # Chin
-        (337, 297),  # Left eye left corner
-        (513, 301),  # Right eye right corne
-        (345, 465),  # Left Mouth corner
-        (453, 469)  # Right mouth corner
-    ], dtype="double")
 
-    # 3D model points.
+    # 3D model points (in)
     points_3d = np.array([
-        (0.0, 0.0, 0.0),  # Nose tip
-        (0.0, -330.0, -65.0),  # Chin
-        (-225.0, 170.0, -135.0),  # Left eye left corner
-        (225.0, 170.0, -135.0),  # Right eye right corne
-        (-150.0, -150.0, -125.0),  # Left Mouth corner
-        (150.0, -150.0, -125.0)  # Right mouth corner
+        # (x, y, z)
+        (-9.75, 0.0, 0.0),  # Left Top
+        (-5.0, -8.5, 0.0),  # Left Bottom
+        (5.0, 8.5, 0.0),  # Right Bottom
+        (9.75, 0.0, 0.0),  # Right Top
+        (0.0, -4.25, 0.0)  # Center
     ])
 
     (success, rotation_vector, translation_vector) = cv2.solvePnP(points_3d, points_2d, camera_matrix,
@@ -68,3 +59,5 @@ def pose_3d(points_2d,
 
     print("Rotation Vector:\n {0}".format(rotation_vector))
     print("Translation Vector:\n {0}".format(translation_vector))
+
+    return translation_vector, rotation_vector
