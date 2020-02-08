@@ -92,7 +92,7 @@ class RobotVision(object):
             else:
                 cx, cy = 0, 0
 
-            rect = cv2.minAreaRect(cnt)
+            rect = cv2.minAreaRect(approx)
             box = cv2.boxPoints(rect)
             box = np.int0(box)
 
