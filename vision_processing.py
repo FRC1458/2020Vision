@@ -74,7 +74,7 @@ class RobotVision(object):
                 print("Area", area)
                 continue
 
-            hull = cv2.convexHull(cnt)
+            hull = cv2.convexHull(approx)
             hull_area = cv2.contourArea(hull)
 
             solidity = float(area) / float(hull_area)
@@ -106,12 +106,6 @@ class RobotVision(object):
             ], dtype="double")
 
             cv2.drawContours(self.current_frame, [hull], 0, (0, 0, 255), 2)
-
-            for n, pt in enumerate(cnt):
-                for bigdaa in pt:
-                    cv2.circle(self.current_frame, bigdaa, 4, (0, 255, 0), -1)
-                    cv2.putText(self.current_frame, str(n), bigdaa, cv2.FONT_HERSHEY_PLAIN, 1, (255, 200, 235), 3,
-                                cv2.LINE_AA)
 
             cv2.putText(self.current_frame, str(rotation), (cx, cy), cv2.FONT_HERSHEY_PLAIN, 1, (255, 200, 235), 3,
                         cv2.LINE_AA)
