@@ -92,17 +92,16 @@ class RobotVision(object):
             else:
                 cx, cy = 0, 0
 
-            '''
-            rect = cv2.minAreaRect(approx)
+            rect = cv2.minAreaRect(cnt)
             box = cv2.boxPoints(rect)
             box = np.int0(box)
-            '''
 
             leftmost = tuple(hull[hull[:, :, 0].argmin()][0])
             rightmost = tuple(hull[hull[:, :, 0].argmax()][0])
             topmost = tuple(hull[hull[:, :, 1].argmin()][0])
             bottommost = tuple(hull[hull[:, :, 1].argmax()][0])
 
+            cv2.drawContours(self.current_frame, [box], 0, (0, 255, 50), 2)
             cv2.drawContours(self.current_frame, [hull], 0, (0, 0, 255), 2)
             cv2.circle(self.current_frame, leftmost, 4, (0, 255, 0), -1)
             cv2.circle(self.current_frame, rightmost, 4, (0, 255, 0), -1)
