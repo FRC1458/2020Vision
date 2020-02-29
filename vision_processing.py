@@ -85,7 +85,7 @@ class RobotVision(object):
             if solidity >= MAX_CNT_SOLIDITY or MIN_CNT_SOLIDITY > solidity:
                 print("solidity Failed")
                 cv2.drawContours(self.current_frame, [hull], 0, (0, 0, 255), 2)
-                cv2.putText(self.current_frame, str(dist), (cx, cy), cv2.FONT_HERSHEY_PLAIN, 1, (255, 200, 235), 3,
+                cv2.putText(self.current_frame, str(solidity), (cx, cy), cv2.FONT_HERSHEY_PLAIN, 1, (255, 200, 235), 3,
                             cv2.LINE_AA)
                 continue
 
@@ -116,6 +116,8 @@ class RobotVision(object):
                 (cx, cy)  # Center
             ], dtype="double")
 
+            cv2.putText(self.current_frame, str(dist), (cx, cy), cv2.FONT_HERSHEY_PLAIN, 1, (255, 200, 235), 3,
+                        cv2.LINE_AA)
             print("---------------------------------")
 
             # self.valid_targets.append(approx)
