@@ -32,8 +32,8 @@ def getRotation(contour):
         return rotation
 
 
-def get_distance(pixel_size, real_size=8.0, focal=8.1536486059258914e+02):
-    return (real_size * focal) / pixel_size
+def get_distance(pixel_size, real_size=8.0, focal=8.1536486059258914e+02, scale=2.4):
+    return scale * ((real_size * focal) / pixel_size)
 
 
 def pose_3d(points_2d,
