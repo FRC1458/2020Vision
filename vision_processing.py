@@ -82,7 +82,9 @@ class RobotVision(object):
             if solidity >= MAX_CNT_SOLIDITY or MIN_CNT_SOLIDITY > solidity:
                 continue
 
+            x, y, w, h = cv2.boundingRect(cnt)
             rotation = getRotation(approx)
+            dist = get_distance(w)
 
             M = cv2.moments(approx)
 
@@ -107,7 +109,7 @@ class RobotVision(object):
 
             cv2.drawContours(self.current_frame, [hull], 0, (0, 0, 255), 2)
 
-            cv2.putText(self.current_frame, str(rotation), (cx, cy), cv2.FONT_HERSHEY_PLAIN, 1, (255, 200, 235), 3,
+            cv2.putText(self.current_frame, str(dist), (cx, cy), cv2.FONT_HERSHEY_PLAIN, 1, (255, 200, 235), 3,
                         cv2.LINE_AA)
 
             # self.valid_targets.append(approx)
