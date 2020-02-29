@@ -84,7 +84,7 @@ class RobotVision(object):
             print("Solidity", solidity)
             if solidity >= MAX_CNT_SOLIDITY or MIN_CNT_SOLIDITY > solidity:
                 print("solidity Failed")
-                # continue
+                continue
 
             print("Tests Passed!")
 
