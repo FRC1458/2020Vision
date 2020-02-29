@@ -23,7 +23,8 @@ MIN_CNT_SOLIDITY = 0.05
 
 
 class RobotVision(object):
-    def __init__(self, camera=C270(), hsv_low=np.array([20, 20, 70]), hsv_high=np.array([180, 255, 255])):
+    # hsv_low=np.array([20, 20, 70]), hsv_high=np.array([180, 255, 255])
+    def __init__(self, camera=C270(), hsv_low=np.array([10, 10, 60]), hsv_high=np.array([190, 255, 255])):
         self.camera: Camera = camera
 
         self.current_frame = None
