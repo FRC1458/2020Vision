@@ -81,6 +81,7 @@ class RobotVision(object):
             solidity = float(area) / float(hull_area)
 
             if solidity >= MAX_CNT_SOLIDITY or MIN_CNT_SOLIDITY > solidity:
+                print("Solidity", solidity)
                 continue
 
             x, y, w, h = cv2.boundingRect(cnt)
