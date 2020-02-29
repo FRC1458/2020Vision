@@ -71,8 +71,9 @@ class RobotVision(object):
 
             area = cv2.contourArea(approx)
 
+            print("Area", area)
             if area >= MAX_CNT_AREA or MIN_CNT_AREA > area:
-                print("Area", area)
+                print("area failed")
                 continue
 
             hull = cv2.convexHull(approx)
@@ -80,9 +81,12 @@ class RobotVision(object):
 
             solidity = float(area) / float(hull_area)
 
+            print("Solidity", solidity)
             if solidity >= MAX_CNT_SOLIDITY or MIN_CNT_SOLIDITY > solidity:
-                print("Solidity", solidity)
+                print("solidity Failed")
                 continue
+
+            print("Tests Passed!")
 
             x, y, w, h = cv2.boundingRect(cnt)
             rotation = getRotation(approx)
@@ -113,6 +117,7 @@ class RobotVision(object):
 
             cv2.putText(self.current_frame, str(dist), (cx, cy), cv2.FONT_HERSHEY_PLAIN, 1, (255, 200, 235), 3,
                         cv2.LINE_AA)
+            print("---------------------------------")
 
             # self.valid_targets.append(approx)
 
